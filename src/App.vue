@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <Main />
+    <Main :films="films" />
   </div>
 </template>
 
@@ -28,7 +28,8 @@ export default {
     getFilms: function(){
       axios.get(this.apiUrl)
       .then( (result) => {
-        console.log(result);
+        console.log(result.data.results);
+        this.films = result.data.results;
       })
 
       .catch((error) => {
