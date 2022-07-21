@@ -12,13 +12,11 @@
 
 <script>
 import filmsList from './filmsList.vue'
-import filmCard from './filmCard.vue'
 
 export default {
     name: 'Main',
     components: {
         filmsList,
-        filmCard,
     },
 
     props: {
