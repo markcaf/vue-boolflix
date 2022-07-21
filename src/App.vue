@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header @search="getFilms"/>
     <Main :films="films" />
   </div>
 </template>
@@ -20,16 +20,21 @@ export default {
   data: function(){
     return {
       films: [],
-      apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=one+piece',
+      apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=',
     };
   },
 
   methods: {
-    getFilms: function(){
+    getFilms: function(search){
+      console.log("Questo è search: " + search)
+      this.apiUrl = this.apiUrl + search;
+      console.log("Questo è apiUrl con la query data da search: " + this.apiUrl);
       axios.get(this.apiUrl)
       .then( (result) => {
         this.films = result.data.results;
-        console.log(this.films);
+        console.log("Array generato con i risultati della query: " + this.films);
+        this.apiUrl = 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=';
+        console.log("apiUrl ripristinato senza parole chiave nella query: " + this.apiUrl);
       })
 
       .catch((error) => {
@@ -39,7 +44,7 @@ export default {
   },
 
   created(){
-    this.getFilms();
+  
   }
 }
 </script>
