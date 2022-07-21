@@ -28,8 +28,8 @@ export default {
     getFilms: function(){
       axios.get(this.apiUrl)
       .then( (result) => {
-        console.log(result.data.results);
         this.films = result.data.results;
+        console.log(this.films);
       })
 
       .catch((error) => {
