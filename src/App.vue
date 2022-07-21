@@ -15,6 +15,30 @@ export default {
   components: {
     Header,
     Main,
+  },
+
+  data: function(){
+    return {
+      films: [],
+      apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=one+piece',
+    };
+  },
+
+  methods: {
+    getFilms: function(){
+      axios.get(this.apiUrl)
+      .then( (result) => {
+        console.log(result);
+      })
+
+      .catch((error) => {
+        console.warn(error);
+      })
+    }
+  },
+
+  created(){
+    this.getFilms();
   }
 }
 </script>
