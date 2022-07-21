@@ -8,8 +8,9 @@
 
             <div class="col-4">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Inserisci il titolo di un film" aria-label="films" aria-describedby="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1">Cerca</span>
+                    <input v-model.trim="searchInput" @keyup.enter="$emit('search', searchInput)"
+                    type="text" class="form-control" placeholder="Inserisci il titolo di un film" aria-label="films" aria-describedby="basic-addon1">
+                    <span @click.prevent="$emit('search', searchInput)" class="input-group-text" id="basic-addon1">Cerca</span>
                 </div>
             </div>
         </div>
@@ -19,10 +20,21 @@
 
 <script>
 export default {
+    name: 'Header',
 
+    data: function(){
+        return {
+            searchInput: '',
+        }
+    }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    .input-group{
+        span{
+            cursor: pointer;
+        }
+    }
 
 </style>
