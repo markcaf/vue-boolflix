@@ -11,7 +11,7 @@
         <li><strong>Titolo originale:</strong> {{ serie.original_name }}</li>
         <li><strong>Media:</strong> {{ serie.media_type }}</li>
         <li><strong>Lingua: </strong><lang-flag :iso="serie.original_language" /></li>
-        <li><strong>Voto:</strong> {{ serie.vote_average }}</li>
+        <li><strong>Voto:</strong> {{ getIntegerVote(serie.vote_average) }}</li>
     </ul>
   </div>
 </template>
@@ -35,6 +35,12 @@ export default {
             required: true,
             type: Object,
         } 
+    },
+
+    methods: {
+        getIntegerVote(vote){
+            return Math.round(vote / 2);
+        },
     },
 
 }
