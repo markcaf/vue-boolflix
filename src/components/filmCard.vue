@@ -10,7 +10,12 @@
         <li><strong>Titolo:</strong> {{ film.title }}</li>
         <li><strong>Titolo originale:</strong> {{ film.original_title }}</li>
         <li><strong>Media:</strong> {{ film.media_type }}</li>
-        <li><strong>Lingua: </strong><lang-flag :iso="film.original_language" /></li>
+        <li v-if="(supportedLanguage.includes(film.original_language))">
+            <strong>Lingua: </strong> <lang-flag :iso="film.original_language"/>
+        </li>
+        <li v-else>
+            <strong>Lingua: </strong> {{ film.original_language }}
+        </li>
         <li><strong>Voto:</strong> 
             <i v-for="vote in getIntegerVote(film.vote_average)" :key="vote" class="fa-solid fa-star ms-1 text-warning"></i>
             <span class="ms-1" v-if="film.vote_average == 0">Non disponibile</span>
@@ -29,7 +34,12 @@ export default {
 
     data: function(){
         return {
-            imageUrl: 'https://image.tmdb.org/t/p/w342'
+            imageUrl: 'https://image.tmdb.org/t/p/w342',
+
+            supportedLanguage: [
+                'am', 'az', 'be', 'bn', 'bg', 'zh', 'ca', 'cs', 'en', 'et', 'fr', 'de', 'ha', 'hi', 'hu', 'it', 'ja', 'jv', 
+                'km', 'ko', 'lv', 'ms', 'mr', 'fa', 'pl', 'pt', 'ro', 'ru', 'es', 'sw', 'ta', 'te', 'th', 'tr', 'uz', 'vi'
+            ],
         }
     },
 
