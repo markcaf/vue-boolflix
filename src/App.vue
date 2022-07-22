@@ -20,21 +20,17 @@ export default {
   data: function(){
     return {
       films: [],
-      apiUrl: 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=',
+      apiKey: '59c53a96f763c9716248c35c07d50ee0',
+      apiUrl: 'https://api.themoviedb.org/3/search/movie',
     };
   },
 
   methods: {
-    getFilms: function(search){
-      console.log("Questo è search: " + search)
-      this.apiUrl = this.apiUrl + search;
-      console.log("Questo è apiUrl con la query data da search: " + this.apiUrl);
-      axios.get(this.apiUrl)
+    getFilms(search){
+      axios.get(`${this.apiUrl}?api_key=${this.apiKey}&language=it-IT&query=${search}`)
       .then( (result) => {
+        console.log(result.data.results);
         this.films = result.data.results;
-        console.log("Array generato con i risultati della query: " + this.films);
-        this.apiUrl = 'https://api.themoviedb.org/3/search/movie?api_key=59c53a96f763c9716248c35c07d50ee0&language=it-IT&query=';
-        console.log("apiUrl ripristinato senza parole chiave nella query: " + this.apiUrl);
       })
 
       .catch((error) => {
