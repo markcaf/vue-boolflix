@@ -1,6 +1,12 @@
 <template>
   <div class="col-2">
-    <ul>
+    <ul class="list-unstyled">
+        <li v-if="film.poster_path != null">
+            <img :src="`${imageUrl}${film.poster_path}`" :alt="film.title">
+        </li>
+        <li v-else>
+            <img class="placeholder" src="../assets/placeholder.jpg" alt="Immagine non presente">
+        </li>
         <li><strong>Titolo:</strong> {{ film.title }}</li>
         <li><strong>Titolo originale:</strong> {{ film.original_title }}</li>
         <li><strong>Media:</strong> {{ film.media_type }}</li>
@@ -18,6 +24,12 @@ export default {
         LangFlag,
     },
 
+    data: function(){
+        return {
+            imageUrl: 'https://image.tmdb.org/t/p/w342'
+        }
+    },
+
     props: {
         'film': {
             required: true,
@@ -28,6 +40,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    img{
+        width: 100%;
+
+        &.placeholder{
+            cursor: default;
+        }
+    }
 
 </style>
