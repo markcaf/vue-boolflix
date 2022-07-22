@@ -11,7 +11,10 @@
         <li><strong>Titolo originale:</strong> {{ film.original_title }}</li>
         <li><strong>Media:</strong> {{ film.media_type }}</li>
         <li><strong>Lingua: </strong><lang-flag :iso="film.original_language" /></li>
-        <li><strong>Voto:</strong> {{ getIntegerVote(film.vote_average) }}</li>
+        <li><strong>Voto:</strong> 
+            <i v-for="vote in getIntegerVote(film.vote_average)" :key="vote" class="fa-solid fa-star ms-1 text-warning"></i>
+            <span class="ms-1" v-if="film.vote_average == 0">Non disponibile</span>
+        </li>
     </ul>
   </div>
 </template>
