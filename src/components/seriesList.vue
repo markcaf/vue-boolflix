@@ -1,7 +1,7 @@
 <template>
-    <section class="mt-3">
-        <h1 class="col-2 ps-3 text-white bg-dark">Serie TV</h1>
-        <div class="seriesList d-flex flex-wrap">
+    <section class="mt-5 mb-5">
+        <h1 class="col-2 ps-3 text-white">Serie TV</h1>
+        <div class="seriesList d-flex">
             <serieCard class="m-3" :serie="serie" v-for="(serie, index) in series" :key="index" />
         </div>
     </section>
@@ -25,6 +25,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    .seriesList{
+        overflow: auto;
+    }
 
 </style>

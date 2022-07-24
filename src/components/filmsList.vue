@@ -1,7 +1,7 @@
 <template>
-    <section class="mt-3">
-        <h1 class="col-2 ps-3 text-white bg-dark">Film</h1>
-        <div class="filmList d-flex flex-wrap">
+    <section class="mt-3 mb-5">
+        <h1 class="col-2 ps-3 text-white">Film</h1>
+        <div class="filmList d-flex">
             <filmCard class="m-3" :film="film" v-for="(film, index) in films" :key="index" />
         </div>
     </section>
@@ -25,6 +25,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+    .filmList{
+        overflow: auto;
+    }
 
 </style>
