@@ -67,5 +67,27 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #1b1b1b;
+
+  /* width */
+  ::-webkit-scrollbar {
+    height: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #282828;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #707070;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #101010;
+  }
 }
 </style>
