@@ -1,6 +1,6 @@
 <template>
   <div class="col-2">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled text-white">
         <li v-if="film.poster_path != null">
             <img :src="`${imageUrl}${film.poster_path}`" :alt="film.title">
         </li>
