@@ -1,8 +1,8 @@
 <template>
     <section class="mt-3 mb-5">
-        <h1 class="col-2 ps-3 text-white">Film</h1>
-        <div class="filmList d-flex">
-            <filmCard class="m-3" :film="film" v-for="(film, index) in films" :key="index" />
+        <h1 class="col-2 text-white">Film</h1>
+        <div class="filmList d-flex px-3">
+            <filmCard class="mt-3 mb-5" :film="film" v-for="(film, index) in films" :key="index" />
         </div>
     </section>
 </template>

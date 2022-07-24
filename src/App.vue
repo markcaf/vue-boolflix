@@ -67,27 +67,26 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
+body{
   background-color: #1b1b1b;
+}
 
-  /* width */
-  ::-webkit-scrollbar {
-    height: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #282828;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #707070;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #101010;
-  }
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #282828;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #707070;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #474747;
 }
 </style>
