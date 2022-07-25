@@ -13,13 +13,15 @@
                 <li v-else>
                     <strong>Lingua: </strong> {{ serie.original_language }}
                 </li>
-                <li><strong>Voto:</strong>
-                    <i v-for="vote in getIntegerVote(serie.vote_average)" :key="vote" class="fa-solid fa-star ms-1 text-warning"></i>
-                    <span class="ms-1" v-if="serie.vote_average == 0">Non disponibile</span>
+                <li><strong>Voto: </strong> 
+                    <span v-if="serie.vote_average == 0">Non disponibile</span>
+
+                    <i v-else v-for="n in 5" :key="n" class="fa-star text-warning"
+                    :class="n <= getIntegerVote(serie.vote_average) ? 'fas' : 'far'"></i>
                 </li>
                 <li v-if="serie.overview != ''"><strong>Trama:</strong> {{ serie.overview }}</li>
                 <li v-else><strong>Trama:</strong> Nessuna informazione disponibile</li>
-            </ul>
+                </ul>
         </div>
     </div>
 </template>
@@ -52,7 +54,7 @@ export default {
 
     methods: {
         getIntegerVote(vote){
-            return Math.round(vote / 2);
+            return Math.ceil(vote / 2);
         },
     },
 

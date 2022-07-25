@@ -13,9 +13,11 @@
             <li v-else>
                 <strong>Lingua: </strong> {{ film.original_language }}
             </li>
-            <li><strong>Voto:</strong> 
-                <i v-for="vote in getIntegerVote(film.vote_average)" :key="vote" class="fa-solid fa-star ms-1 text-warning"></i>
-                <span class="ms-1" v-if="film.vote_average == 0">Non disponibile</span>
+            <li><strong>Voto: </strong> 
+                <span v-if="film.vote_average == 0">Non disponibile</span>
+
+                <i v-else v-for="n in 5" :key="n" class="fa-star text-warning"
+                   :class="n <= getIntegerVote(film.vote_average) ? 'fas' : 'far'"></i>
             </li>
             <li v-if="film.overview != ''" ><strong>Trama:</strong> {{ film.overview }}</li>
             <li v-else ><strong>Trama:</strong> Nessuna informazione disponibile</li>
@@ -52,7 +54,7 @@ export default {
 
     methods: {
         getIntegerVote(vote){
-            return Math.round(vote / 2);
+            return Math.ceil(vote / 2);
         },
     }
 
