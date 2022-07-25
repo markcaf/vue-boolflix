@@ -70,6 +70,7 @@ export default {
 
         &:hover{
             transform: scale(1.1);
+            transition: transform 0.7s;
 
             img{
                 display: none;
