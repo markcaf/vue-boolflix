@@ -28,6 +28,7 @@
 
 <script>
 import LangFlag from 'vue-lang-code-flags';
+
 export default {
     name: 'filmCard',
     components: {
@@ -42,6 +43,7 @@ export default {
                 'am', 'az', 'be', 'bn', 'bg', 'zh', 'ca', 'cs', 'en', 'et', 'fr', 'de', 'ha', 'hi', 'hu', 'it', 'ja', 'jv', 
                 'km', 'ko', 'lv', 'ms', 'mr', 'fa', 'pl', 'pt', 'ro', 'ru', 'es', 'sw', 'ta', 'te', 'th', 'tr', 'uz', 'vi'
             ],
+
         }
     },
 
@@ -56,6 +58,7 @@ export default {
         getIntegerVote(vote){
             return Math.ceil(vote / 2);
         },
+
     }
 
 }

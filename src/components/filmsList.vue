@@ -2,7 +2,7 @@
     <section class="mt-3 mb-5">
         <h1 class="col-2 text-white">Film</h1>
         <div class="filmList d-flex px-3">
-            <filmCard class="mt-3 mb-5" :film="film" v-for="(film, index) in films" :key="index" />
+            <filmCard class="mt-3 mb-5" :film="film" v-for="film in films" :key="film.id" />
         </div>
     </section>
 </template>
