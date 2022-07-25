@@ -6,7 +6,9 @@
     
         <ul class="list-unstyled text-white">
             <li><strong>Titolo:</strong> {{ film.title }}</li>
-            <li><strong>Titolo originale:</strong> {{ film.original_title }}</li>
+            <li v-if="film.title != film.original_title">
+                <strong>Titolo originale:</strong> {{ film.original_title }}
+            </li>
             <li v-if="(supportedLanguage.includes(film.original_language))">
                 <strong>Lingua: </strong> <lang-flag :iso="film.original_language"/>
             </li>

@@ -6,7 +6,9 @@
 
             <ul class="list-unstyled text-white">
                 <li><strong>Titolo:</strong> {{ serie.name }}</li>
-                <li><strong>Titolo originale:</strong> {{ serie.original_name }}</li>
+                <li v-if="serie.name != serie.original_name">
+                    <strong>Titolo originale:</strong> {{ serie.original_name }}
+                </li>
                 <li v-if="(supportedLanguage.includes(serie.original_language))">
                     <strong>Lingua: </strong> <lang-flag :iso="serie.original_language"/>
                 </li>
