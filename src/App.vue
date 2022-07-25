@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @search="search"/>
-    <Main :films="films" :series="series"/>
+    <Main :films="films" :series="series" :message="message"/>
   </div>
 </template>
 
@@ -22,6 +22,7 @@ export default {
       films: [],
       series: [],
       listAll: [],
+      message: 'Benvenuto nel programma di ricerca per Film e Serie Tv, inserisci il film/serie nel campo di input per iniziare.',
       apiKey: '59c53a96f763c9716248c35c07d50ee0',
       apiUrl: 'https://api.themoviedb.org/3/search/multi',
     };
@@ -42,6 +43,8 @@ export default {
             this.series.push(element);
             };
           });
+        
+        this.message = 'La tua ricerca non ha prodotto risultati.'
 
       })
 
