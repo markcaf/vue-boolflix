@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header @search="getAllMedia"/>
+    <Header @search="search"/>
     <Main :films="films" :series="series"/>
   </div>
 </template>
@@ -28,12 +28,11 @@ export default {
   },
 
   methods: {
-    getAllMedia(search){
+    getAllMedia(apiParams){
       this.films = [];
       this.series = [];
-      axios.get(`${this.apiUrl}?api_key=${this.apiKey}&language=it-IT&query=${search}`)
+      axios.get(this.apiUrl, apiParams)
       .then( (result) => {
-        console.log(result.data.results);
         this.listAll = result.data.results;
 
         this.listAll.forEach(element => {
@@ -41,22 +40,28 @@ export default {
             this.films.push(element);
           } else if (element.media_type == 'tv') {
             this.series.push(element);
-            };          
-        });
+            };
+          });
 
-        console.log(this.films);
-        console.log(this.series);
       })
 
       .catch((error) => {
         console.warn(error);
       })
+    },
+
+    search(searchInput){
+      const apiParams = 
+      { 
+        params: {
+          api_key: this.apiKey,
+          language: 'it-IT',
+          query: searchInput,
+        }
+      }
+      this.getAllMedia(apiParams);
     }
   },
-
-  created(){
-  
-  }
 }
 </script>
 
