@@ -23,6 +23,12 @@
                 </li>
                 <li v-if="serie.overview != ''"><strong>Trama:</strong> {{ serie.overview }}</li>
                 <li v-else><strong>Trama:</strong> Nessuna informazione disponibile</li>
+                <div class="text-center">
+                    <button @click="castSearch(serie.id)" class="my-2 btn btn-outline-danger">Scopri il cast</button>
+                    <li v-for="member in cast" :key="member.id" class="mt-2"> 
+                        {{member.name}} 
+                    </li>
+                </div>
             </ul>
         </div>
     </div>
@@ -30,6 +36,8 @@
 
 <script>
 import LangFlag from 'vue-lang-code-flags';
+import axios from 'axios';
+
 export default {
     name: 'serieCard',
     components: {
@@ -44,6 +52,10 @@ export default {
                 'am', 'az', 'be', 'bn', 'bg', 'zh', 'ca', 'cs', 'en', 'et', 'fr', 'de', 'ha', 'hi', 'hu', 'it', 'ja', 'jv', 
                 'km', 'ko', 'lv', 'ms', 'mr', 'fa', 'pl', 'pt', 'ro', 'ru', 'es', 'sw', 'ta', 'te', 'th', 'tr', 'uz', 'vi'
             ],
+
+            apiUrl: 'https://api.themoviedb.org/3/tv/',
+            apiKey: '59c53a96f763c9716248c35c07d50ee0',
+            cast: [],
         }
     },
 
@@ -57,6 +69,30 @@ export default {
     methods: {
         getIntegerVote(vote){
             return Math.ceil(vote / 2);
+        },
+
+        castSearch(id){
+            const apiParams = 
+            { 
+                params: {
+                api_key: this.apiKey,
+                language: 'it-IT',
+                }
+            }
+            this.getCast(apiParams);
+        },
+
+        getCast(apiParams){
+            axios.get(this.apiUrl + this.serie.id + '/credits?', apiParams)
+            .then( (result) => {
+                this.cast = result.data.cast;
+                this.cast.splice(5);
+                console.log(this.cast);
+            })
+
+            .catch((error) => {
+                console.warn(error);
+            })
         },
     },
 
