@@ -21,7 +21,7 @@
                 </li>
                 <li v-if="serie.overview != ''"><strong>Trama:</strong> {{ serie.overview }}</li>
                 <li v-else><strong>Trama:</strong> Nessuna informazione disponibile</li>
-                </ul>
+            </ul>
         </div>
     </div>
 </template>
